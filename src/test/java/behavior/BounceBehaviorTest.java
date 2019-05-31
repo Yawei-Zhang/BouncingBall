@@ -2,6 +2,7 @@ package behavior;
 
 import ball.Ball;
 import ball.ui.BallWorld;
+import behavior.model.Direction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +16,7 @@ class BounceBehaviorTest {
         int originPosition = ball.getCenter().y;
 
         //When
-        BounceBehavior bounceBehavior = new BounceBehavior(ball);
+        BounceBehavior bounceBehavior = new BounceBehavior(ball, Direction.DOWN);
         bounceBehavior.behave();
 
         //Then
@@ -29,7 +30,7 @@ class BounceBehaviorTest {
         Ball ball = new Ball(75, originPosition);
 
         //When
-        BounceBehavior bounceBehavior = new BounceBehavior(ball);
+        BounceBehavior bounceBehavior = new BounceBehavior(ball, Direction.DOWN);
         bounceBehavior.behave();
 
         //Then
@@ -42,8 +43,7 @@ class BounceBehaviorTest {
         Ball ball = new Ball(75, Ball.DEFAULT_RADIUS);
 
         //When
-        BounceBehavior bounceBehavior = new BounceBehavior(ball);
-        bounceBehavior.reverseDirection();
+        BounceBehavior bounceBehavior = new BounceBehavior(ball, Direction.UP);
         bounceBehavior.behave();
 
         //Then

@@ -2,6 +2,7 @@ package behavior;
 
 import ball.Ball;
 import ball.ui.BallWorld;
+import behavior.model.Direction;
 
 import java.awt.*;
 
@@ -9,10 +10,11 @@ public class BounceBehavior implements Behavior {
 
     public static final int MOVEMENT_SPEED = 12;
     private final Ball ball;
-    private int direction = 1;
+    private int direction;
 
-    public BounceBehavior(Ball ball) {
+    public BounceBehavior(Ball ball, int direction) {
         this.ball = ball;
+        this.direction = direction;
     }
 
     @Override
@@ -24,14 +26,14 @@ public class BounceBehavior implements Behavior {
     }
 
     private boolean isHitBottom() {
-        return ball.getCenter().y + ball.getRadius() >= BallWorld.BOX_HEIGHT;
+        return direction == Direction.DOWN && ball.getCenter().y + ball.getRadius() >= BallWorld.BOX_HEIGHT;
     }
 
     private boolean isHitTop() {
-        return ball.getCenter().y <= ball.getRadius();
+        return direction == Direction.UP && ball.getCenter().y <= ball.getRadius();
     }
 
-    public void reverseDirection() {
+    private void reverseDirection() {
         direction = 0 - direction;
     }
 }
