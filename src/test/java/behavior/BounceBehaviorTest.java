@@ -23,7 +23,7 @@ class BounceBehaviorTest {
     }
 
     @Test
-    public void shouldReverseDirectionWhenBallHitsBottom() {
+    public void shouldMoveUpAfterHittingBottom() {
         //Given
         int originPosition = BallWorld.BOX_HEIGHT - Ball.DEFAULT_RADIUS;
         Ball ball = new Ball(75, originPosition);
@@ -37,7 +37,7 @@ class BounceBehaviorTest {
     }
 
     @Test
-    public void shouldMovingDownAfterBallHitsTop() {
+    public void shouldMovingDownAfterHittingTop() {
         //Given
         Ball ball = new Ball(75, Ball.DEFAULT_RADIUS);
 
