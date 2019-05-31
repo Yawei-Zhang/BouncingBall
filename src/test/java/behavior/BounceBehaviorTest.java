@@ -24,6 +24,20 @@ class BounceBehaviorTest {
     }
 
     @Test
+    public void shouldMoveUp() {
+        //Given
+        Ball ball = new Ball(75, 100);
+        int originPosition = ball.getCenter().y;
+
+        //When
+        BounceBehavior bounceBehavior = new BounceBehavior(ball, Direction.UP);
+        bounceBehavior.behave();
+
+        //Then
+        assertEquals(originPosition - BounceBehavior.MOVEMENT_SPEED, ball.getCenter().y);
+    }
+
+    @Test
     public void shouldMoveUpAfterHittingBottom() {
         //Given
         int originPosition = BallWorld.BOX_HEIGHT - Ball.DEFAULT_RADIUS;
