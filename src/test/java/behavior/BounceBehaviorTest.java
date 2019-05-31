@@ -35,4 +35,18 @@ class BounceBehaviorTest {
         //Then
         assertEquals(originPosition - BounceBehavior.MOVEMENT_SPEED, ball.getCenter().y);
     }
+
+    @Test
+    public void shouldMovingDownAfterBallHitsTop() {
+        //Given
+        Ball ball = new Ball(75, Ball.DEFAULT_RADIUS);
+
+        //When
+        BounceBehavior bounceBehavior = new BounceBehavior(ball);
+        bounceBehavior.reverseDirection();
+        bounceBehavior.behave();
+
+        //Then
+        assertEquals(Ball.DEFAULT_RADIUS + BounceBehavior.MOVEMENT_SPEED, ball.getCenter().y);
+    }
 }

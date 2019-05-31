@@ -17,13 +17,21 @@ public class BounceBehavior implements Behavior {
 
     @Override
     public void behave() {
-        if (isHitBottom()) {
-            this.direction = 0 - this.direction;
+        if (isHitBottom() || isHitTop()) {
+            reverseDirection();
         }
         ball.setCenter(new Point(ball.getCenter().x, ball.getCenter().y + direction * MOVEMENT_SPEED));
     }
 
     private boolean isHitBottom() {
         return ball.getCenter().y + ball.getRadius() >= BallWorld.BOX_HEIGHT;
+    }
+
+    private boolean isHitTop() {
+        return ball.getCenter().y <= ball.getRadius();
+    }
+
+    public void reverseDirection() {
+        direction = 0 - direction;
     }
 }
